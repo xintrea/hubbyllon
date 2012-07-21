@@ -1,17 +1,17 @@
 // ==UserScript==
-// @name        hubylon
-// @namespace   hubylon
+// @name        hubbyllon
+// @namespace   hubbyllon
 // @include     http://github.com*
 // @include     https://github.com/*
 // @description I18n for GitHub
 // @copyright   Sergey M. Stepanov & hubylonians, 2012
-// @version     0.2
+// @version     0.3
 // @licence     GPL 3
 // ==/UserScript==
 
 // Note: Switch your editor to UTF-8 codepage.
 
-// alert("Welcome to Hubilon!");
+// alert("Welcome to Hubbillon!");
 
 (function(window, undefined ) {
  
