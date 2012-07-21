@@ -108,68 +108,70 @@
   // ------------------
   // Translation phrase
   // ------------------
+
+  tr=new Array();
   
   // Russian
   if(lang=="rus"){
 
-   tr( "top_nav_explore", "Обзор" );
-   tr( "top_nav_gist", "Сущности" );
-   tr( "top_nav_blog", "Блог" );
-   tr( "top_nav_help", "Помощь" );
+   tr["top_nav_explore"]="Обзор";
+   tr["top_nav_gist"]   ="Сущности";
+   tr["top_nav_blog"]   ="Блог";
+   tr["top_nav_help"]   ="Помощь";
 
-   tr( "userbox_new_repo", getReplaceHtml("Create a New Repo", "Создать новый репозитарий", el["userbox_new_repo"] ) );
-   tr( "userbox_notifications", getReplaceHtml("Notifications", "Уведомления", el["userbox_notifications"] ) );
-   tr( "userbox_account_settings", getReplaceHtml("Account Settings", "Настройки аккаунта", el["userbox_account_settings"] ) );
-   tr( "userbox_logout", getReplaceHtml("Sign Out", "Выход", el["userbox_logout"] ) );
+   tr["userbox_new_repo"]        =getReplaceHtml("Create a New Repo", "Создать новый репозитарий", el["userbox_new_repo"] );
+   tr["userbox_notifications"]   =getReplaceHtml("Notifications", "Уведомления", el["userbox_notifications"] );
+   tr["userbox_account_settings"]=getReplaceHtml("Account Settings", "Настройки аккаунта", el["userbox_account_settings"] );
+   tr["userbox_logout"]          =getReplaceHtml("Sign Out", "Выход", el["userbox_logout"] );
 
    repl=new Array();
    repl["News Feed"]="Лента новостей";
    repl["Subscribe to your personalized GitHub Feed"]="Подпишитесь на персональную ленту RSS-новостей GitHub";
-   tr( "subscribe_news_feed", getReplaceHtml(repl, "Array()", el["subscribe_news_feed"] ) );
+   tr["subscribe_news_feed"]=getReplaceHtml(repl, "Array()", el["subscribe_news_feed"] );
 
-   tr( "news_feed", "Лента новостей" );
-   tr( "your_actions", "Ваши действия" );
-   tr( "pull_requests", "Запросы" );
-   tr( "issues", "Задачи" );
+   tr["news_feed"]    ="Лента новостей";
+   tr["your_actions"] ="Ваши действия";
+   tr["pull_requests"]="Запросы";
+   tr["issues"]       ="Задачи";
 
    repl=new Array();
    repl["GitHub Bootcamp"]          ="Учебная программа GitHub";
    repl["<span>If.*started.</span>"]="<span>Если вы еще новичек, мы создали несколько уроков, чтобы вам было легче начать пользоваться Git.</span>";
    repl["Hide this notice forever"] ="Скрыть и больше не показывать это сообщение";
-   tr( "bootcamp_header", getReplaceHtml(repl, "Array()", el["bootcamp_header"] ) );
+   tr["bootcamp_header"]            =getReplaceHtml(repl, "Array()", el["bootcamp_header"] );
 
-   tr( "bootcamp_setup_header", "Настройка Git" );
-   tr( "bootcamp_setup_text", "Краткое руководство чтобы помочь вам быстрее освоить Git." );
-   tr( "bootcamp_create_a_repo_header", "Создание репозитария" );
-   tr( "bootcamp_create_a_repo_text", "Создание места для хранения вашего кода." );
-   tr( "bootcamp_fork_a_repo_header", "Ветвление репозитариев" );
-   tr( "bootcamp_fork_a_repo_text", "Cоздайте новый проект на основе существующего." );
-   tr( "bootcamp_be_social_header", "Будьте общительны" );
-   tr( "bootcamp_be_social_text", "Приглашайте друзей.<br>Следите за проектами." );
+   tr["bootcamp_setup_header"]        ="Настройка Git";
+   tr["bootcamp_setup_text"]          ="Краткое руководство чтобы помочь вам быстрее освоить Git.";
+   tr["bootcamp_create_a_repo_header"]="Создание репозитария";
+   tr["bootcamp_create_a_repo_text"]  ="Создание места для хранения вашего кода.";
+   tr["bootcamp_fork_a_repo_header"]  ="Ветвление репозитариев";
+   tr["bootcamp_fork_a_repo_text"]    ="Cоздайте новый проект на основе существующего.";
+   tr["bootcamp_be_social_header"]    ="Будьте общительны";
+   tr["bootcamp_be_social_text"]      ="Приглашайте друзей.<br>Следите за проектами.";
 
 
-   tr( "dashboard_started_watching", "начал(а) отслеживание" );
-   tr( "dashboard_message", getReplaceHtml("(.*)'s description(.*)", "описание $1 $2", el["dashboard_message"] ) );
-   tr( "dashboard_pushed", "добавил(а)" );
+   tr["dashboard_started_watching"]="начал(а) отслеживание";
+   tr["dashboard_message"]         =getReplaceHtml("(.*)'s description(.*)", "описание $1 $2", el["dashboard_message"] );
+   tr["dashboard_pushed"]          ="добавил(а)";
 
    repl=new Array();
    repl[" to "]=" в ";
    repl[" at "]=" для ";
-   tr( "dashboard_to_branch_at", getReplaceHtml(repl, "Array()", el["dashboard_to_branch_at"] ) );
+   tr["dashboard_to_branch_at"]=getReplaceHtml(repl, "Array()", el["dashboard_to_branch_at"] );
 
 
-   tr( "repo_code", "Код" );
-   tr( "repo_network", "Связи и ветвления" );
-   tr( "repo_pull_requests", getReplaceHtml("Pull Requests", "Запросы", el["repo_pull_requests"] ) );
-   tr( "repo_issues", getReplaceHtml("Issues", "Задачи", el["repo_issues"] ) );
-   tr( "repo_wiki", "База знаний" );
-   tr( "repo_graphsrepo_contributors", "Графики" );
+   tr["repo_code"]                   ="Код";
+   tr["repo_network"]                ="Связи и ветвления";
+   tr["repo_pull_requests"]          =getReplaceHtml("Pull Requests", "Запросы", el["repo_pull_requests"] );
+   tr["repo_issues"]                 =getReplaceHtml("Issues", "Задачи", el["repo_issues"] );
+   tr["repo_wiki"]                   ="База знаний";
+   tr["repo_graphsrepo_contributors"]="Графики";
 
   }
 
   // German
   if(lang=="deu"){
-   tr( "issues", "Die Aufgaben" );
+   tr["issues"]="Die Aufgaben";
   }
   
 
@@ -193,7 +195,6 @@
      el[elementName].html( tr[elementName] ); // $el["code"].text("c-o-d-e");
   */
 
-  /*
   for(elementName in el)
    if(tr[elementName]!==undefined)
     if(el[elementName].length==1) // If one element
@@ -203,29 +204,7 @@
       alert( "Element "+i+" each : "+elementName+" : "+$(o).html()+", Translate : "+ tr[elementName]); 
       $(o).html( tr[elementName] );
      });
-  */   
-
-  function tr( elementName, replaceText ) {
-
-    if(el[elementName].length==1) // If one DOM element
-     el[elementName].html( replaceText );
-    else if (el[elementName].length>1) // If more DOM elements
-     el[elementName].each(function(i, o) {
-      console.log( "In tr(). Element "+i+" : "+elementName+" : "+$(o).html()+", Translate : "+ replaceText ); 
-
-      var writeText="";
-      if( type(replaceText)!=='Array' )
-        writeText=replaceText;
-      else
-        writeText=replaceText[i];
-
-      console.log( "In tr(). Write text : "+ writeText );
-
-      $(o).html( writeText );
-     });
-
-  }
-
+     
 
   function strReplace(searchPattern, replacePattern, text) {
    return text.split(searchPattern).join(replacePattern); // return text.replace(new RegExp(searchPattern,'g'), replacePattern);
@@ -239,89 +218,27 @@
   // searchPattern['regexp1']='replace_string_1'
   // searchPattern['regexpN']='replace_string_N'
   function getReplaceHtml(searchPattern, replacePattern, element) {
+    if(element.length) { // element exists
 
-    console.log("Call getReplaceHtml()");
+      text=element.html();
 
-    // If element exists
-    if(element.length) { 
+     // If simply replace
+      if(replacePattern!="Array()")
+       return text.replace(new RegExp(searchPattern,'g'), replacePattern); // return text.split(searchPattern).join(replacePattern);
+      else {
+        result=text;
 
-      // If sigle element
-      if(element.length==1) {
-        console.log("In getReplaceHtml() element is single, value : "+element.html());
-        text=element.html();
-        return textReplace(searchPattern, replacePattern, text);
-      }
-
-      // If more elements
-      if(element.length>1) {
-        console.log("In getReplaceHtml() element is more. Count of elements "+element.length);
-
-        var result=new Array();
-
-        element.each(function(i, o) {
-          console.log("In getReplaceHtml() element :"+i);
-
-          text=$(o).html();
-          console.log("In getReplaceHtml() from text :"+text);
-
-          result[i]=textReplace(searchPattern, replacePattern, text);
-          console.log("In getReplaceHtml() result text :"+result[i]);
-        });
+        for(searchText in searchPattern) {
+          replaceText=searchPattern[searchText];
+          result=result.replace(new RegExp(searchText), replaceText);
+        }
 
         return result;
       }
-
-    } // Close alternate if element exists
-
-    return "";
-  }
-
-
-  // This function already return only text
-  function textReplace(searchPattern, replacePattern, text) {
-
-    console.log("Call textReplace(), text : "+text);
-
-    // If simply replace
-    if(replacePattern!="Array()") {
-      console.log("In textReplace() simply replase.");
-      console.log("In textReplace() searchPattern : "+searchPattern);
-      console.log("In textReplace() replacePattern : "+replacePattern);
-      return text.replace(new RegExp(searchPattern,'g'), replacePattern); // return text.split(searchPattern).join(replacePattern);
-    }
-    else {
-      // Else multiply replace
-      console.log("In textReplace() multiply replase.");
-      
-      result=text;
-
-      for(searchText in searchPattern) {
-
-        console.log("In textReplace() searchText : "+searchText);
-
-        replaceText=searchPattern[searchText];
-        console.log("In textReplace() replaceText : "+replaceText);
-
-        result=result.replace(new RegExp(searchText), replaceText);
-
-        console.log("In textReplace() iteration result : "+result);
-      }
-
-      console.log("In textReplace() result : "+result);
-
-      return result;
     }
 
     return "";
   }
-
-
-  // Detect type of variable
-  // returns 'Number' 'String' 'Object' 'Array' 'Function' 'Date' 'HTMLDocument'
-  function type(o){
-    return !!o && Object.prototype.toString.call(o).match(/(\w+)\]/)[1];
-  }
-
 
 })(window);
 
