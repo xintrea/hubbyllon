@@ -59,7 +59,6 @@
  
   // alert("Set lang: "+lang);
 
-
   // ----------------------------------------
   // Collection of DOM elements for translate
   // ----------------------------------------
@@ -67,13 +66,25 @@
   el=new Array();
  
   // Main page for logged user
-  el["issues"]=       $("a[href='/dashboard/issues']");
+  el["top_nav_explore"]=$("ul.top-nav li.explore a"); // <ul class="top-nav"><li class="explore"><a href="https://github.com/explore">Explore</a></li>...
+  el["top_nav_gist"]   =$("ul.top-nav li a[href='https://gist.github.com']"); // <ul class="top-nav">...<li><a href="https://gist.github.com">Gist</a></li>...
+  el["top_nav_blog"]   =$("ul.top-nav li a[href='/blog']"); // <ul class="top-nav">...<li><a href="/blog">Blog</a></li>...
+  el["top_nav_help"]   =$("ul.top-nav li a[href='http://help.github.com']"); // <ul class="top-nav">...<li><a href="http://help.github.com">Help</a></li>...
+
+  el["subscribe_news_feed"]=$("a.feed"); // <a class="feed tooltipped leftwards" ...
+
+  el["news_feed"]    =$("a[href='/']"); // <a href="/" [[class="selected]]">News Feed</a>
+  el["your_actions"] =$("a[href='/dashboard/yours']");
   el["pull_requests"]=$("a[href='/dashboard/pulls']");
-  el["your_actions"]= $("a[href='/dashboard/yours']");
-  el["news_feed"]=    $("a[href='/'].selected");
+  el["issues"]       =$("a[href='/dashboard/issues']");
  
-  // User page
-  el["code"]=         $("a[highlight='repo_sourcerepo_downloadsrepo_commitsrepo_tagsrepo_branches']");
+  // Repository page
+  el["repo_code"]                   =$("a[highlight='repo_sourcerepo_downloadsrepo_commitsrepo_tagsrepo_branches']");
+  el["repo_network"]                =$("a[highlight='repo_network']");
+  el["repo_pull_requests"]          =$("a[highlight='repo_pulls']");
+  el["repo_issues"]                 =$("a[highlight='repo_issues']");
+  el["repo_wiki"]                   =$("a[highlight='repo_wiki']");
+  el["repo_graphsrepo_contributors"]=$("a[highlight='repo_graphsrepo_contributors']");
 
 
   // ------------------
@@ -84,12 +95,25 @@
   
   // Russian
   if(lang=="rus"){
-   tr["issues"]       ="Задачи";
-   tr["pull_requests"]="Запросы на добавление кода";
-   tr["your_actions"] ="Ваши действия";
-   tr["news_feed"]    ="Лента новостей";
+   tr["top_nav_explore"]="Обзор";
+   tr["top_nav_gist"]   ="Сущности";
+   tr["top_nav_blog"]   ="Блог";
+   tr["top_nav_help"]   ="Помощь";
 
-   tr["code"]         ="Код";
+   tr["subscribe_news_feed"]=getReplaceHtml("News Feed", "Лента новостей", el["subscribe_news_feed"] );
+
+   tr["news_feed"]    ="Лента новостей";
+   tr["your_actions"] ="Ваши действия";
+   tr["pull_requests"]="Запросы";
+   tr["issues"]       ="Задачи";
+
+   tr["repo_code"]                   ="Код";
+   tr["repo_network"]                ="Связи и ветвления";
+   tr["repo_pull_requests"]          =getReplaceHtml("Pull Requests", "Запросы", el["repo_pull_requests"] );
+   tr["repo_issues"]                 =getReplaceHtml("Issues", "Задачи", el["repo_issues"] );
+   tr["repo_wiki"]                   ="База знаний";
+   tr["repo_graphsrepo_contributors"]="Графики";
+
   }
 
   // German
@@ -104,7 +128,7 @@
 
   basePhrases=new Array();
   for(elementName in el)
-   basePhrases[elementName]=el[elementName].text();
+   basePhrases[elementName]=el[elementName].html();
 
 
   // ------------------------------
@@ -113,8 +137,23 @@
 
   for(elementName in el)
    if(tr[elementName]!==undefined)
-    el[elementName].text( tr[elementName] ); // $el["code"].text("c-o-d-e");
+    if(el[elementName].length)
+     el[elementName].html( tr[elementName] ); // $el["code"].text("c-o-d-e");
    
- 
+
+  function strReplace(searchPattern, replacePattern, text) {
+   return text.split(searchPattern).join(replacePattern);
+   // return text.replace(new RegExp(searchPattern,'g'), replacePattern);
+  }
+
+  function getReplaceHtml(searchPattern, replacePattern, element) {
+   if(element.length) {
+    text=element.html();
+    return text.split(searchPattern).join(replacePattern);
+   }
+
+   return "";
+  }
+
 })(window);
 
