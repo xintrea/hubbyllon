@@ -77,7 +77,16 @@
   el["your_actions"] =$("a[href='/dashboard/yours']");
   el["pull_requests"]=$("a[href='/dashboard/pulls']");
   el["issues"]       =$("a[href='/dashboard/issues']");
- 
+
+  el["bootcamp_setup_header"]=$("div.bootcamp-body ul li.setup h2"); // <div class="bootcamp-body"><ul><li class="setup"><h2></h2><p></p>...
+  el["bootcamp_setup_text"]=$("div.bootcamp-body ul li.setup p"); // <div class="bootcamp-body"><ul><li class="setup"><h2></h2><p></p>...
+  el["bootcamp_create_a_repo_header"]=$("div.bootcamp-body ul li.create-a-repo h2"); 
+  el["bootcamp_create_a_repo_text"]=$("div.bootcamp-body ul li.create-a-repo p");
+  el["bootcamp_fork_a_repo_header"]=$("div.bootcamp-body ul li.fork-a-repo h2"); 
+  el["bootcamp_fork_a_repo_text"]=$("div.bootcamp-body ul li.fork-a-repo p");
+  el["bootcamp_be_social_header"]=$("div.bootcamp-body ul li.be-social h2"); 
+  el["bootcamp_be_social_text"]=$("div.bootcamp-body ul li.be-social p");
+  
   // Repository page
   el["repo_code"]                   =$("a[highlight='repo_sourcerepo_downloadsrepo_commitsrepo_tagsrepo_branches']");
   el["repo_network"]                =$("a[highlight='repo_network']");
@@ -106,6 +115,15 @@
    tr["your_actions"] ="Ваши действия";
    tr["pull_requests"]="Запросы";
    tr["issues"]       ="Задачи";
+
+   tr["bootcamp_setup_header"]        ="Настройка Git";
+   tr["bootcamp_setup_text"]          ="Краткое руководство чтобы помочь вам быстрее освоить Git.";
+   tr["bootcamp_create_a_repo_header"]="Создание репозитария";
+   tr["bootcamp_create_a_repo_text"]  ="Создание места для хранения вашего кода.";
+   tr["bootcamp_fork_a_repo_header"]  ="Ветвление репозитариев";
+   tr["bootcamp_fork_a_repo_text"]    ="Cоздайте новый проект на основе существующего.";
+   tr["bootcamp_be_social_header"]    ="Будьте общительны";
+   tr["bootcamp_be_social_text"]      ="Приглашайте друзей.<br>Следите за проектами.";
 
    tr["repo_code"]                   ="Код";
    tr["repo_network"]                ="Связи и ветвления";
