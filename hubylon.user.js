@@ -71,13 +71,14 @@
   el["top_nav_blog"]   =$("ul.top-nav li a[href='/blog']"); // <ul class="top-nav">...<li><a href="/blog">Blog</a></li>...
   el["top_nav_help"]   =$("ul.top-nav li a[href='http://help.github.com']"); // <ul class="top-nav">...<li><a href="http://help.github.com">Help</a></li>...
 
-  el["subscribe_news_feed"]=$("a.feed"); // <a class="feed tooltipped leftwards" ...
+  el["subscribe_news_feed"]=$("ul.pagehead-actions li:first"); // <ul class="pagehead-actions"><li><a class="feed tooltipped leftwards" href="/xintrea.private" original-title="Subscribe to your personalized GitHub Feed">...
 
   el["news_feed"]    =$("a[href='/']"); // <a href="/" [[class="selected]]">News Feed</a>
   el["your_actions"] =$("a[href='/dashboard/yours']");
   el["pull_requests"]=$("a[href='/dashboard/pulls']");
   el["issues"]       =$("a[href='/dashboard/issues']");
 
+  el["bootcamp_header"]=$("div.bootcamp h1"); // <div class="bootcamp"><h1>GitHub Bootcamp</h1>...
   el["bootcamp_setup_header"]=$("div.bootcamp-body ul li.setup h2"); // <div class="bootcamp-body"><ul><li class="setup"><h2></h2><p></p>...
   el["bootcamp_setup_text"]=$("div.bootcamp-body ul li.setup p"); // <div class="bootcamp-body"><ul><li class="setup"><h2></h2><p></p>...
   el["bootcamp_create_a_repo_header"]=$("div.bootcamp-body ul li.create-a-repo h2"); 
@@ -109,12 +110,21 @@
    tr["top_nav_blog"]   ="Блог";
    tr["top_nav_help"]   ="Помощь";
 
-   tr["subscribe_news_feed"]=getReplaceHtml("News Feed", "Лента новостей", el["subscribe_news_feed"] );
+   repl=new Array();
+   repl["News Feed"]="Лента новостей";
+   repl["Subscribe to your personalized GitHub Feed"]="Подпишитесь на персональную ленту RSS-новостей GitHub";
+   tr["subscribe_news_feed"]=getReplaceHtml(repl, "Array()", el["subscribe_news_feed"] );
 
    tr["news_feed"]    ="Лента новостей";
    tr["your_actions"] ="Ваши действия";
    tr["pull_requests"]="Запросы";
    tr["issues"]       ="Задачи";
+
+   repl=new Array();
+   repl["GitHub Bootcamp"]          ="Учебная программа GitHub";
+   repl["<span>If.*started.</span>"]="<span>Если вы еще новичек, мы создали несколько уроков, чтобы вам было легче начать пользоваться Git.</span>";
+   repl["Hide this notice forever"] ="Скрыть и больше не показывать это сообщение";
+   tr["bootcamp_header"]            =getReplaceHtml(repl, "Array()", el["bootcamp_header"] );
 
    tr["bootcamp_setup_header"]        ="Настройка Git";
    tr["bootcamp_setup_text"]          ="Краткое руководство чтобы помочь вам быстрее освоить Git.";
@@ -164,10 +174,35 @@
    // return text.replace(new RegExp(searchPattern,'g'), replacePattern);
   }
 
+
+  // Return modify HTML code for element
+  // If searchPattern and replacePattern is string, run simply replace
+  // If searchPattern is Array(), and replacePattern=="Array()", run multiply replace
+  // and replace data get from searchPattern. The searchPattern structure:
+  // searchPattern['regexp1']='replace_string_1';
+  // searchPattern['regexpN']='replace_string_N';
   function getReplaceHtml(searchPattern, replacePattern, element) {
-   if(element.length) {
+   if(element.length) { // element exists
+
     text=element.html();
-    return text.split(searchPattern).join(replacePattern);
+
+    // If simply replace
+    if(replacePattern!="Array()")
+     return text.split(searchPattern).join(replacePattern);
+    else
+     {
+      // Variable searchPattern is array of regular expression
+      result=text;
+
+      for(searchText in searchPattern)
+       {
+        replaceText=searchPattern[searchText];
+
+        result=result.replace(new RegExp(searchText), replaceText);
+       }
+
+      return result;
+     }
    }
 
    return "";
