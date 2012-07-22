@@ -94,8 +94,9 @@
   el["dashboard_started_watching"]=$("div#dashboard span:contains('started watching')");
   el["dashboard_message"]=$("div#dashboard div.message:contains('s description')");
   el["dashboard_pushed"]=$("div#dashboard span:contains('pushed')");
-  el["dashboard_to_branch_at"]=$("div#dashboard div.title(' to ', ' at ')");
-  
+  el["dashboard_to_branch_at"]=$("div#dashboard div.alert.push div.title(' to ', ' at ')");
+  el["dashboard_alert_git_hub"]=$("div#dashboard div.alert.git_hub div.title");
+
   // Repository page
   el["repo_code"]                   =$("a[highlight='repo_sourcerepo_downloadsrepo_commitsrepo_tagsrepo_branches']");
   el["repo_network"]                =$("a[highlight='repo_network']");
@@ -137,7 +138,6 @@
    repl["<span>If.*started.</span>"]="<span>Если вы еще новичек, мы создали несколько уроков, чтобы вам было легче начать пользоваться Git.</span>";
    repl["Hide this notice forever"] ="Скрыть и больше не показывать это сообщение";
    tr( "bootcamp_header", getReplaceHtml(repl, "Array()", el["bootcamp_header"] ) );
-
    tr( "bootcamp_setup_header", "Настройка Git" );
    tr( "bootcamp_setup_text", "Краткое руководство чтобы помочь вам быстрее освоить Git." );
    tr( "bootcamp_create_a_repo_header", "Создание репозитария" );
@@ -151,12 +151,11 @@
    tr( "dashboard_started_watching", "начал(а) отслеживание" );
    tr( "dashboard_message", getReplaceHtml("(.*)'s description(.*)", "описание $1 $2", el["dashboard_message"] ) );
    tr( "dashboard_pushed", "добавил(а)" );
-
    repl=new Array();
    repl[" to "]=" в ";
    repl[" at "]=" для ";
    tr( "dashboard_to_branch_at", getReplaceHtml(repl, "Array()", el["dashboard_to_branch_at"] ) );
-
+   tr( "dashboard_alert_git_hub", getReplaceHtml("Welcome to GitHub! What's next", "Добро пожаловать на GitHub! Что дальше", el["dashboard_alert_git_hub"] ) );
 
    tr( "repo_code", "Код" );
    tr( "repo_network", "Связи и ветвления" );
