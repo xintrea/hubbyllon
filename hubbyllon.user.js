@@ -11,7 +11,7 @@
 
 // Note: Switch your editor to UTF-8 codepage.
 
-// alert("Welcome to Hubbillon!");
+// alert("Welcome to Hubbyllon!");
 
 (function(window, undefined ) {
  
