@@ -91,11 +91,16 @@
   el["bootcamp_be_social_header"]=$("div.bootcamp-body ul li.be-social h2"); 
   el["bootcamp_be_social_text"]=$("div.bootcamp-body ul li.be-social p");
 
+
   el["dashboard_started_watching"]=$("div#dashboard span:contains('started watching')");
   el["dashboard_message"]=$("div#dashboard div.message:contains('s description')");
   el["dashboard_pushed"]=$("div#dashboard span:contains('pushed')");
   el["dashboard_to_branch_at"]=$("div#dashboard div.alert.push div.title(' to ', ' at ')");
   el["dashboard_alert_git_hub"]=$("div#dashboard div.alert.git_hub div.title");
+  el["dashboard_create_repository"]=$("div#dashboard div.message a[href='/repositories/new']");
+  el["dashboard_about_yourself"]=$("div#dashboard div.message a[href='https://github.com/account']");
+  el["dashboard_browse_interesting_repos"]=$("div#dashboard div.message a[href='/repositories']");
+  el["dashboard_follow_twitter"]=$("div#dashboard div.message a[href='http://twitter.com/github']");
 
   // Repository page
   el["repo_code"]                   =$("a[highlight='repo_sourcerepo_downloadsrepo_commitsrepo_tagsrepo_branches']");
@@ -156,6 +161,13 @@
    repl[" at "]=" для ";
    tr( "dashboard_to_branch_at", getReplaceHtml(repl, "Array()", el["dashboard_to_branch_at"] ) );
    tr( "dashboard_alert_git_hub", getReplaceHtml("Welcome to GitHub! What's next", "Добро пожаловать на GitHub! Что дальше", el["dashboard_alert_git_hub"] ) );
+   tr( "dashboard_create_repository", "Создать репозитарий" );
+   tr( "dashboard_about_yourself", "Расскажите нам о себе" );
+   tr( "dashboard_browse_interesting_repos", "Просмотр интересных репозитариев" );
+   repl=new Array();
+   repl["Follow"]="Отслеживайте ";
+   repl["on "]="через ";
+   tr( "dashboard_follow_twitter", getReplaceHtml(repl, "Array()", el["dashboard_follow_twitter"] ) );
 
    tr( "repo_code", "Код" );
    tr( "repo_network", "Связи и ветвления" );
