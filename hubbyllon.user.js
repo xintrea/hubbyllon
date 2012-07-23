@@ -5,7 +5,7 @@
 // @include     https://github.com/*
 // @description I18n for GitHub
 // @copyright   Sergey M. Stepanov & hubylonians, 2012
-// @version     0.3
+// @version     0.4
 // @licence     GPL 3
 // ==/UserScript==
 
@@ -101,7 +101,19 @@
   el["dashboard_about_yourself"]=$("div#dashboard div.message a[href='https://github.com/account']");
   el["dashboard_browse_interesting_repos"]=$("div#dashboard div.message a[href='/repositories']");
   el["dashboard_follow_twitter"]=$("div#dashboard div.message a[href='http://twitter.com/github']");
+  el["dashboard_your_repositories"]=$("div#dashboard div#your_repos div.top-bar");
+  el["dashboard_new_repository"]=$("div#dashboard div#your_repos div.top-bar a.button.new-repo");
+  el["dashboard_all_repositories"]=$("div#dashboard div#your_repos div.filter-bar ul.repo_filterer li.all_repos a");
+  el["dashboard_public"]=$("div#dashboard div#your_repos div.filter-bar ul.repo_filterer li a[rel='public']");
+  el["dashboard_private"]=$("div#dashboard div#your_repos div.filter-bar ul.repo_filterer li a[rel='private']");
+  el["dashboard_sources"]=$("div#dashboard div#your_repos div.filter-bar ul.repo_filterer li a[rel='source']");
+  el["dashboard_forks"]=$("div#dashboard div#your_repos div.filter-bar ul.repo_filterer li a[rel='fork']");
 
+  // The element with modify tag attribute block modify sibling and child element
+  // Move this element at end element block
+  el["dashboard_find_a_repository"]=$("div#dashboard div#your_repos div.filter-bar");
+
+  
   // Repository page
   el["repo_code"]                   =$("a[highlight='repo_sourcerepo_downloadsrepo_commitsrepo_tagsrepo_branches']");
   el["repo_network"]                =$("a[highlight='repo_network']");
@@ -152,7 +164,7 @@
    tr( "bootcamp_be_social_header", "Будьте общительны" );
    tr( "bootcamp_be_social_text", "Приглашайте друзей.<br>Следите за проектами." );
 
-
+   
    tr( "dashboard_started_watching", "начал(а) отслеживание" );
    tr( "dashboard_message", getReplaceHtml("(.*)'s description(.*)", "описание $1 $2", el["dashboard_message"] ) );
    tr( "dashboard_pushed", "добавил(а)" );
@@ -168,7 +180,22 @@
    repl["Follow"]="Отслеживайте ";
    repl["on "]="через ";
    tr( "dashboard_follow_twitter", getReplaceHtml(repl, "Array()", el["dashboard_follow_twitter"] ) );
+   tr( "dashboard_your_repositories", getReplaceHtml("Your Repositories", "Ваши репозитарии", el["dashboard_your_repositories"] ) );
 
+   // The bug. Text on button "New repository" don't update (Opera 12, Firefox 14).
+   text=getReplaceHtml("New repository", "Новый репозитарий", el["dashboard_new_repository"] );
+   tr( "dashboard_new_repository", text );
+   // alert(text);
+   // alert(el["dashboard_new_repository"].html());
+   
+   tr( "dashboard_all_repositories", "Все репозитарии" );
+   tr( "dashboard_public", "Публичные" );
+   tr( "dashboard_private", "Приватные" );
+   tr( "dashboard_sources", "Исходные" );
+   tr( "dashboard_forks", "Ответвленные" );
+   tr( "dashboard_find_a_repository", getReplaceHtml("Find a Repository", "Поиск репозитария", el["dashboard_find_a_repository"] ) );
+
+   
    tr( "repo_code", "Код" );
    tr( "repo_network", "Связи и ветвления" );
    tr( "repo_pull_requests", getReplaceHtml("Pull Requests", "Запросы", el["repo_pull_requests"] ) );
@@ -176,6 +203,7 @@
    tr( "repo_wiki", "База знаний" );
    tr( "repo_graphsrepo_contributors", "Графики" );
 
+   
   }
 
   // German
@@ -197,29 +225,10 @@
   // Translate DOM elements on page
   // ------------------------------
 
-  /*
-  for(elementName in el)
-   if(tr[elementName]!==undefined)
-    if(el[elementName].length)
-     el[elementName].html( tr[elementName] ); // $el["code"].text("c-o-d-e");
-  */
-
-  /*
-  for(elementName in el)
-   if(tr[elementName]!==undefined)
-    if(el[elementName].length==1) // If one element
-     el[elementName].html( tr[elementName] ); // $el["code"].text("c-o-d-e"); 
-    else if (el[elementName].length>1) // If more elements
-     el[elementName].each(function(i, o) {
-      alert( "Element "+i+" each : "+elementName+" : "+$(o).html()+", Translate : "+ tr[elementName]); 
-      $(o).html( tr[elementName] );
-     });
-  */   
-
   function tr( elementName, replaceText ) {
 
     if(el[elementName].length==1) // If one DOM element
-     el[elementName].html( replaceText );
+     el[elementName].html( replaceText ); // $el["code"].text("c-o-d-e");
     else if (el[elementName].length>1) // If more DOM elements
      el[elementName].each(function(i, o) {
       console.log( "In tr(). Element "+i+" : "+elementName+" : "+$(o).html()+", Translate : "+ replaceText ); 
